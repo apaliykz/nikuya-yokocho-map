@@ -3,190 +3,232 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JR秋叶原站 电器街北口</title>
+    <title>宗导的旅行攻略 - 秋叶原篇</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+        
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif;
-            background: #000;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             height: 100vh;
             overflow: hidden;
         }
-        .top-bar {
-            background: linear-gradient(to right, #1976D2, #1565C0);
-            color: white;
-            padding: 16px 30px;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.4);
-            position: relative;
-            z-index: 100;
-        }
-        .title {
-            font-size: 21px;
-            font-weight: 700;
-            margin-bottom: 6px;
-        }
-        .subtitle {
-            font-size: 13px;
-            opacity: 0.92;
-        }
-        .map-wrapper {
-            height: calc(100vh - 66px);
-            position: relative;
-        }
-        iframe {
+        
+        #streetview {
             width: 100%;
             height: 100%;
-            border: none;
         }
+        
         .info-box {
             position: absolute;
-            bottom: 25px;
-            left: 25px;
-            background: rgba(0, 0, 0, 0.90);
-            backdrop-filter: blur(25px);
-            border-radius: 14px;
-            padding: 26px;
-            max-width: 440px;
-            box-shadow: 0 12px 45px rgba(0,0,0,0.7);
-            border: 1px solid rgba(255,255,255,0.12);
-            z-index: 50;
-        }
-        .welcome-banner {
-            background: linear-gradient(135deg, #FF5252 0%, #E53935 100%);
-            padding: 19px 22px;
-            border-radius: 12px;
-            text-align: center;
-            margin-bottom: 22px;
-            box-shadow: 0 5px 18px rgba(255, 82, 82, 0.45);
-        }
-        .welcome-banner h2 {
-            font-size: 19px;
-            font-weight: 700;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            margin-bottom: 9px;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.25);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            max-width: 400px;
+            z-index: 1000;
+            animation: slideIn 0.5s ease-out;
         }
-        .welcome-banner p {
-            font-size: 16px;
-            color: white;
-            margin: 0;
-            font-weight: 500;
-        }
-        .station-info h3 {
-            color: #42A5F5;
-            font-size: 17px;
-            margin-bottom: 16px;
-            font-weight: 700;
-        }
-        .info-row {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 13px;
-            color: #E8E8E8;
-            font-size: 14px;
-            line-height: 1.65;
-        }
-        .info-row .icon {
-            width: 25px;
-            flex-shrink: 0;
-            margin-right: 11px;
-            font-size: 17px;
-        }
-        .controls-tip {
-            position: absolute;
-            top: 25px;
-            right: 25px;
-            background: rgba(0, 0, 0, 0.90);
-            backdrop-filter: blur(25px);
-            color: white;
-            padding: 17px 22px;
-            border-radius: 12px;
-            font-size: 13px;
-            max-width: 245px;
-            box-shadow: 0 12px 45px rgba(0,0,0,0.7);
-            border: 1px solid rgba(255,255,255,0.12);
-            z-index: 50;
-        }
-        .controls-tip h4 {
-            color: #4FC3F7;
-            font-size: 15px;
-            margin-bottom: 11px;
-            font-weight: 700;
-        }
-        .controls-tip p {
-            line-height: 1.95;
-            margin: 0;
-        }
-        @media (max-width: 768px) {
-            .info-box, .controls-tip {
-                position: static;
-                max-width: none;
-                margin: 15px;
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
             }
-            .map-wrapper {
-                height: auto;
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        .info-box h1 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            line-height: 1.4;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .info-box .welcome {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .info-box .location-info {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 15px;
+            border-radius: 10px;
+            line-height: 1.6;
+        }
+        
+        .info-box .location-info h2 {
+            font-size: 16px;
+            margin-bottom: 10px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+            padding-bottom: 8px;
+        }
+        
+        .info-box .location-info p {
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        
+        .toggle-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 1001;
+            transition: transform 0.2s;
+        }
+        
+        .toggle-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        .info-box.hidden {
+            display: none;
+        }
+        
+        .controls-info {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 12px;
+            max-width: 250px;
+        }
+        
+        .controls-info h3 {
+            font-size: 14px;
+            margin-bottom: 8px;
+            color: #ffd700;
+        }
+        
+        .controls-info ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .controls-info li {
+            margin-bottom: 5px;
+            padding-left: 15px;
+            position: relative;
+        }
+        
+        .controls-info li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #ffd700;
+        }
+        
+        @media (max-width: 768px) {
+            .info-box {
+                max-width: calc(100% - 40px);
+                padding: 20px;
+            }
+            
+            .controls-info {
+                bottom: 10px;
+                right: 10px;
+                max-width: calc(100% - 20px);
             }
         }
     </style>
 </head>
 <body>
-    <div class="top-bar">
-        <div class="title">🚉 JR秋叶原站 电器街北口</div>
-        <div class="subtitle">JR Akihabara Station - Electric Town North Exit</div>
+    <button class="toggle-btn" onclick="toggleInfo()">📍 信息</button>
+    
+    <div class="info-box" id="infoBox">
+        <div class="welcome">
+            <h1>宗导的旅行攻略✨秋叶原篇✨<br>感谢您一直以来对宗导的支持❤️✨</h1>
+        </div>
+        
+        <div class="location-info">
+            <h2>📍 JR秋葉原駅</h2>
+            <p><strong>地址：</strong>東京都千代田区外神田1丁目</p>
+            <p><strong>特色：</strong>东京著名的电器街和动漫文化圣地</p>
+            <p><strong>交通：</strong>JR山手线、京浜東北线、総武线交汇站</p>
+            <p><strong>周边：</strong>电器商城、动漫店、女仆咖啡厅、游戏中心</p>
+            <p><strong>推荐：</strong>秋叶原电器街、Radio会馆、Animate本店</p>
+        </div>
     </div>
     
-    <div class="map-wrapper">
-        <iframe 
-            src="https://www.google.com/maps/embed?pb=!4v1696000000000!6m8!1m7!1sCIHM0ogKEICAgICkro3d6gE!2m2!1d35.698383!2d139.7730717!3f134.4!4f-7.2!5f0.7853981633974483"
-            allowfullscreen
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-        
-        <div class="info-box">
-            <div class="welcome-banner">
-                <h2>宗导的旅行攻略✨秋叶原篇✨</h2>
-                <p>感谢您一直以来对宗导的支持❤️✨</p>
-            </div>
-            
-            <div class="station-info">
-                <h3>🚉 JR秋叶原站 电器街北口</h3>
-                <div class="info-row">
-                    <span class="icon">📍</span>
-                    <span>电器街改札口右侧出口（北口）</span>
-                </div>
-                <div class="info-row">
-                    <span class="icon">🏢</span>
-                    <span>东京都千代田区外神田4-14-1</span>
-                </div>
-                <div class="info-row">
-                    <span class="icon">🏛️</span>
-                    <span>出口正对秋叶原UDX大楼</span>
-                </div>
-                <div class="info-row">
-                    <span class="icon">🚇</span>
-                    <span>JR山手线、总武线、京滨东北线</span>
-                </div>
-                <div class="info-row">
-                    <span class="icon">🛍️</span>
-                    <span>通向秋叶原电器街中央通り</span>
-                </div>
-            </div>
-        </div>
-        
-        <div class="controls-tip">
-            <h4>💡 操作提示</h4>
-            <p>
-                🖱️ 拖拽 - 旋转视角<br>
-                👆 点击箭头 - 前进移动<br>
-                🔍 滚轮 - 缩放画面<br>
-                👆 双击 - 跳转位置
-            </p>
-        </div>
+    <div id="streetview"></div>
+    
+    <div class="controls-info">
+        <h3>🎮 操作指南</h3>
+        <ul>
+            <li>拖拽旋转视角</li>
+            <li>点击箭头沿街移动</li>
+            <li>双击或滚轮缩放</li>
+            <li>点击信息按钮切换显示</li>
+        </ul>
     </div>
+
+    <script>
+        let panorama;
+        
+        function initStreetView() {
+            // JR秋叶原站的坐标
+            const akihabraStation = { lat: 35.6984, lng: 139.7731 };
+            
+            panorama = new google.maps.StreetViewPanorama(
+                document.getElementById('streetview'),
+                {
+                    position: akihabraStation,
+                    pov: {
+                        heading: 34,
+                        pitch: 0
+                    },
+                    zoom: 1,
+                    // 启用所有控制功能
+                    addressControl: true,
+                    linksControl: true,
+                    panControl: true,
+                    enableCloseButton: false,
+                    fullscreenControl: true,
+                    motionTracking: true,
+                    motionTrackingControl: true
+                }
+            );
+        }
+        
+        function toggleInfo() {
+            const infoBox = document.getElementById('infoBox');
+            infoBox.classList.toggle('hidden');
+        }
+        
+        // 自动隐藏信息框（5秒后）
+        setTimeout(() => {
+            const infoBox = document.getElementById('infoBox');
+            infoBox.style.opacity = '0.9';
+        }, 5000);
+    </script>
+    
+    <!-- 替换YOUR_API_KEY为您的Google Maps API密钥 -->
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initStreetView">
+    </script>
 </body>
 </html>
