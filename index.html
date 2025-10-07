@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>肉屋横丁 秋叶原店 - 实景地图</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a0a;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #d32f2f 0%, #b71c1c 100%);
+            color: white;
+            padding: 18px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            position: relative;
+            z-index: 100;
+        }
+        .title-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .title {
+            font-size: 22px;
+            font-weight: 700;
+        }
+        .subtitle {
+            font-size: 13px;
+            opacity: 0.9;
+            margin-top: 4px;
+        }
+        .header-btn {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .header-btn:hover {
+            background: rgba(255,255,255,0.3);
+            border-color: rgba(255,255,255,0.5);
+            transform: translateY(-2px);
+        }
+        .map-container {
+            height: calc(100vh - 70px);
+            position: relative;
+            background: #000;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+        .info-panel {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0,0,0,0.85);
+            color: white;
+            padding: 20px 25px;
+            border-radius: 12px;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+            z-index: 50;
+            max-width: 400px;
+        }
+        .info-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #ff5252;
+        }
+        .info-item {
+            margin: 8px 0;
+            font-size: 13px;
+            line-height: 1.6;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+        .info-icon {
+            flex-shrink: 0;
+            width: 20px;
+        }
+        .tip {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.85);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+            z-index: 50;
+            font-size: 13px;
+            max-width: 250px;
+        }
+        .tip-title {
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #4fc3f7;
+        }
+        .tip-list {
+            line-height: 1.8;
+        }
+        @media (max-width: 968px) {
+            .header {
+                flex-direction: column;
+                gap: 10px;
+                padding: 15px 20px;
+            }
+            .info-panel, .tip {
+                position: static;
+                margin: 15px;
+                max-width: none;
+            }
+            .map-container {
+                height: auto;
+                min-height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="title-section">
+            <div>
+                <div class="title">🥩 肉屋横丁 秋叶原店</div>
+                <div class="subtitle">和牛放題の殿堂 | Wagyu All-You-Can-Eat</div>
+            </div>
+        </div>
+        <a href="https://www.google.com/maps/place/%E5%92%8C%E7%89%9B%E6%94%BE%E9%A1%8C%E3%81%AE%E6%AE%BF%E5%A0%82+%E8%82%89%E5%B1%8B%E6%A8%AA%E4%B8%81+%E7%A7%8B%E8%91%89%E5%8E%9F%E5%BA%97/@35.6986656,139.7718683,3a,75y,96.41h,90t/data=!3m7!1e1!3m5!1sqaVy5F5NEayxLVqJQzUZTg!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail!7i16384!8i8192" 
+           target="_blank" 
+           class="header-btn">
+           🔗 在Google Maps中打开
+        </a>
+    </div>
+    
+    <div class="map-container">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!4v1728000000000!6m8!1m7!1sqaVy5F5NEayxLVqJQzUZTg!2m2!1d35.6986656!2d139.7718683!3f96.41!4f-23.27!5f0.7853981633974483"
+            allowfullscreen="" 
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+        
+        <div class="info-panel">
+            <div class="info-title">📍 店铺信息</div>
+            <div class="info-item">
+                <span class="info-icon">🏢</span>
+                <span>東京都千代田区外神田1-18-19 BiTO AKIBA 3F</span>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">🚇</span>
+                <span>JR秋叶原站 电器街口 步行1分钟</span>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">📞</span>
+                <span>+81-50-5869-7540</span>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">🕐</span>
+                <span>平日 12:00-22:00 | 周末 11:30-22:00</span>
+            </div>
+        </div>
+        
+        <div class="tip">
+            <div class="tip-title">💡 操作提示</div>
+            <div class="tip-list">
+                🖱️ 拖拽 - 旋转视角<br>
+                👆 点击箭头 - 前进移动<br>
+                🔍 滚轮 - 缩放画面<br>
+                👆 双击 - 跳转位置
+            </div>
+        </div>
+    </div>
+</body>
+</html>
