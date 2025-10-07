@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>秋叶原JR车站 电器街口 - 实景地图</title>
+    <title>JR秋叶原站 电器街口</title>
     <style>
         * {
             margin: 0;
@@ -11,214 +11,177 @@
             box-sizing: border-box;
         }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #0a0a0a;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            background: #000;
             height: 100vh;
             overflow: hidden;
         }
-        .header {
-            background: linear-gradient(135deg, #1976d2 0%, #0d47a1 100%);
+        .top-bar {
+            background: linear-gradient(to right, #2196F3, #1976D2);
             color: white;
-            padding: 18px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            padding: 15px 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
             position: relative;
             z-index: 100;
         }
-        .title-section {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
         .title {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 700;
+            margin-bottom: 5px;
         }
         .subtitle {
             font-size: 13px;
             opacity: 0.9;
-            margin-top: 4px;
         }
-        .header-btn {
-            background: rgba(255,255,255,0.2);
-            color: white;
-            border: 2px solid rgba(255,255,255,0.3);
-            padding: 10px 20px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 600;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-block;
-        }
-        .header-btn:hover {
-            background: rgba(255,255,255,0.3);
-            border-color: rgba(255,255,255,0.5);
-            transform: translateY(-2px);
-        }
-        .map-container {
-            height: calc(100vh - 70px);
+        .map-wrapper {
+            height: calc(100vh - 63px);
             position: relative;
-            background: #000;
         }
         iframe {
             width: 100%;
             height: 100%;
             border: none;
-            display: block;
         }
-        .info-panel {
+        .info-box {
             position: absolute;
-            bottom: 20px;
-            left: 20px;
-            background: rgba(0,0,0,0.85);
-            color: white;
+            bottom: 25px;
+            left: 25px;
+            background: rgba(0, 0, 0, 0.88);
+            backdrop-filter: blur(20px);
+            border-radius: 15px;
             padding: 25px;
-            border-radius: 12px;
-            backdrop-filter: blur(15px);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
-            z-index: 50;
             max-width: 420px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+            border: 1px solid rgba(255,255,255,0.1);
+            z-index: 50;
         }
-        .welcome-text {
-            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
-            padding: 15px 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
+        .welcome-banner {
+            background: linear-gradient(135deg, #FF5252 0%, #F44336 100%);
+            padding: 18px 20px;
+            border-radius: 12px;
             text-align: center;
-            border: 2px solid rgba(255,255,255,0.2);
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(255, 82, 82, 0.4);
         }
-        .welcome-title {
-            font-size: 17px;
+        .welcome-banner h2 {
+            font-size: 18px;
             font-weight: 700;
-            margin-bottom: 8px;
             color: white;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
-        .welcome-subtitle {
-            font-size: 14px;
-            color: rgba(255,255,255,0.95);
+        .welcome-banner p {
+            font-size: 15px;
+            color: white;
+            margin: 0;
+            font-weight: 500;
         }
-        .info-title {
+        .station-info h3 {
+            color: #42A5F5;
             font-size: 16px;
+            margin-bottom: 15px;
             font-weight: 700;
-            margin-bottom: 12px;
-            color: #64b5f6;
         }
-        .info-item {
-            margin: 8px 0;
-            font-size: 13px;
-            line-height: 1.6;
+        .info-row {
             display: flex;
             align-items: flex-start;
-            gap: 8px;
+            margin-bottom: 12px;
+            color: #E0E0E0;
+            font-size: 14px;
+            line-height: 1.6;
         }
-        .info-icon {
+        .info-row .icon {
+            width: 24px;
             flex-shrink: 0;
-            width: 20px;
+            margin-right: 10px;
+            font-size: 16px;
         }
-        .tip {
+        .controls-tip {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(0,0,0,0.85);
+            top: 25px;
+            right: 25px;
+            background: rgba(0, 0, 0, 0.88);
+            backdrop-filter: blur(20px);
             color: white;
-            padding: 15px 20px;
-            border-radius: 10px;
-            backdrop-filter: blur(15px);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
-            z-index: 50;
+            padding: 16px 20px;
+            border-radius: 12px;
             font-size: 13px;
-            max-width: 250px;
+            max-width: 240px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+            border: 1px solid rgba(255,255,255,0.1);
+            z-index: 50;
         }
-        .tip-title {
+        .controls-tip h4 {
+            color: #4FC3F7;
+            font-size: 14px;
+            margin-bottom: 10px;
             font-weight: 700;
-            margin-bottom: 8px;
-            color: #4fc3f7;
         }
-        .tip-list {
-            line-height: 1.8;
+        .controls-tip p {
+            line-height: 1.9;
+            margin: 0;
         }
-        @media (max-width: 968px) {
-            .header {
-                flex-direction: column;
-                gap: 10px;
-                padding: 15px 20px;
-            }
-            .info-panel, .tip {
+        @media (max-width: 768px) {
+            .info-box, .controls-tip {
                 position: static;
-                margin: 15px;
                 max-width: none;
+                margin: 15px;
             }
-            .map-container {
+            .map-wrapper {
                 height: auto;
-                min-height: 400px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <div class="title-section">
-            <div>
-                <div class="title">🚉 秋叶原JR车站 电器街口</div>
-                <div class="subtitle">Akihabara Station - Electric Town Exit</div>
-            </div>
-        </div>
-        <a href="https://www.google.com/maps/place/JR%E7%A7%8B%E8%91%89%E5%8E%9F%E9%A7%85/@35.6983103,139.7719557,17z" 
-           target="_blank" 
-           class="header-btn">
-           🔗 在Google Maps中打开
-        </a>
+    <div class="top-bar">
+        <div class="title">🚉 JR秋叶原站 电器街口</div>
+        <div class="subtitle">JR Akihabara Station - Electric Town Exit</div>
     </div>
     
-    <div class="map-container">
+    <div class="map-wrapper">
         <iframe 
-            src="https://www.google.com/maps/embed?pb=!4v1696000000000!6m8!1m7!1sCAoSLEFGMVFpcE5YNjBqYzVQdjJlUThKRUNWaE5YVzJ6WUxLRkFoY0Q4clVGdXd2!2m2!1d35.6983103!2d139.7741444!3f180!4f0!5f0.7853981633974483"
-            allowfullscreen="" 
+            src="https://www.google.com/maps/embed?pb=!4v1696000000000!6m8!1m7!1sCAoSLEFGMVFpcE5lVGM5SDRKQVl0X2hsRFVmdGE3VzZHSXJaTnhqYWRXUEhHaHZn!2m2!1d35.6982847!2d139.7734296!3f270!4f0!5f0.7853981633974483"
+            allowfullscreen
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade">
         </iframe>
         
-        <div class="info-panel">
-            <div class="welcome-text">
-                <div class="welcome-title">宗导的旅行攻略✨秋叶原篇✨</div>
-                <div class="welcome-subtitle">感谢您一直以来对宗导的支持❤️✨</div>
+        <div class="info-box">
+            <div class="welcome-banner">
+                <h2>宗导的旅行攻略✨秋叶原篇✨</h2>
+                <p>感谢您一直以来对宗导的支持❤️✨</p>
             </div>
             
-            <div class="info-title">🚉 车站出口信息</div>
-            <div class="info-item">
-                <span class="info-icon">📍</span>
-                <span>JR秋叶原站 电器街口（Electric Town Exit）</span>
-            </div>
-            <div class="info-item">
-                <span class="info-icon">🏢</span>
-                <span>东京都千代田区外神田1丁目</span>
-            </div>
-            <div class="info-item">
-                <span class="info-icon">🚇</span>
-                <span>JR山手线、总武线、京滨东北线</span>
-            </div>
-            <div class="info-item">
-                <span class="info-icon">🛍️</span>
-                <span>最繁华的电器街商圈入口</span>
-            </div>
-            <div class="info-item">
-                <span class="info-icon">⏰</span>
-                <span>24小时开放（末班车后出口关闭）</span>
+            <div class="station-info">
+                <h3>🚉 车站信息</h3>
+                <div class="info-row">
+                    <span class="icon">📍</span>
+                    <span>JR秋叶原站 电器街改札口</span>
+                </div>
+                <div class="info-row">
+                    <span class="icon">🏢</span>
+                    <span>东京都千代田区外神田1丁目</span>
+                </div>
+                <div class="info-row">
+                    <span class="icon">🚇</span>
+                    <span>JR山手线、总武线、京滨东北线</span>
+                </div>
+                <div class="info-row">
+                    <span class="icon">🛍️</span>
+                    <span>秋叶原电器街主入口</span>
+                </div>
             </div>
         </div>
         
-        <div class="tip">
-            <div class="tip-title">💡 操作提示</div>
-            <div class="tip-list">
+        <div class="controls-tip">
+            <h4>💡 操作提示</h4>
+            <p>
                 🖱️ 拖拽 - 旋转视角<br>
                 👆 点击箭头 - 前进移动<br>
                 🔍 滚轮 - 缩放画面<br>
                 👆 双击 - 跳转位置
-            </div>
+            </p>
         </div>
     </div>
 </body>
